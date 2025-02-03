@@ -1,24 +1,34 @@
 package com.example.librarymanagementsystem.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class User {
 
     @Id
-    private int UserId;
+    private int userId;
+
+    @NotNull
+    @Size(min=2, max=12)
+
     private String Username;
+
+    @NotNull
+    @Size(min=2, max=12)
+
     private String PasswordHash;
+
     private String Role;
-    //private String UserName;
-    //private String Password;
 
     public int getUserId() {
-        return UserId;
+        return userId;
     }
 
-    public void setUserId(int UserId) {
-        this.UserId = UserId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -44,29 +54,9 @@ public class User {
     public void setRole(String Role){
         this.Role=Role;
     }
-    // public String getLastName() {
-    //     return LastName;
-    // }
 
-    // public void setLastName(String LastName) {
-    //     this.LastName = LastName;
-    // }
-
-    // public int getContactNo() {
-    //     return ContactNo;
-    // }
-
-    // public void setContactNo(int ContactNo) {
-    //     this.ContactNo = ContactNo;
-    // }
-
-    // public String getUserName() {
-    //     return UserName;
-    // }
-
-    // public void setUserName(String UserName) {
-    //     this.UserName = UserName;
-    // }
-
+    public String toString() {
+		return "User(UserId: " + this.userId + ", UserName: " + this.Username + ", PasswordHash: " + this.PasswordHash + ", Role: " + this.Role +")";
+	}
     
 }

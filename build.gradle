@@ -28,6 +28,8 @@ dependencies {
 	testImplementation 'org.testcontainers:junit-jupiter'
 	testImplementation 'org.testcontainers:mysql'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation 'jakarta.validation:jakarta.validation-api:3.0.2' // Add this line
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final' // Hibernate implementation of Jakarta Validation
 }
 
 tasks.named('test') {

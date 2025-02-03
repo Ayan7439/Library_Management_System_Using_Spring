@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <form action="#" th:action="@{/}" th:object="${User}" method="post">
+            <table>
+                <tr>
+                    <td>UserId:</td>
+                    <td><input type="text" th:field="*{userId}" /></td>
+                    <td th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">UserId Error</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td><input type="text" th:field="*{Username}" /></td>
+                    <td th:if="${#fields.hasErrors('Username')}" th:errors="*{Username}">UserName Error</td>
+                </tr>
+                <tr>
+                    <td>PassWordHash:</td>
+                    <td><input type="text" th:field="*{PasswordHash}" /></td>
+                    <td th:if="${#fields.hasErrors('PasswordHash')}" th:errors="*{PasswordHash}">PassWordHash Error</td>
+                </tr>
+                <tr>
+                    <td>Role:</td>
+                    <td><input type="text" th:field="*{Role}" /></td>
+                    <td th:if="${#fields.hasErrors('Role')}" th:errors="*{Role}">Role Error</td>
+                </tr>
+                <tr>
+                    <td><button type="login">LOGIN</button></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
