@@ -1,25 +1,28 @@
 services:
   mysql:
-    image: 'mysql:latest'
+    image: mysql:8
+    container_name: librarymanagementsystem
+    restart: always
     environment:
-      - 'MYSQL_DATABASE=librarymanagement'
-      - 'MYSQL_PASSWORD=root@123'
-      - 'MYSQL_ROOT_PASSWORD=root@123'
-      - 'MYSQL_USER=root'
+      MYSQL_ROOT_PASSWORD: root@123  # Set the root password
+      MYSQL_DATABASE: librarymanagement
     ports:
-      - '3306:3306'
+      - "3306:3306"
+
 
 
 
 
 # services:
 #   mysql:
-#     container_name: 'librarymanagement-mysql-1'
 #     image: 'mysql:latest'
 #     environment:
-#       - 'MYSQL_DATABASE=librarymanagementsystem'
-#       - 'MYSQL_PASSWORD=Sm@123'
-#       - 'MYSQL_ROOT_PASSWORD=Sm@123'
-#       - 'MYSQL_USER=root'
+#       - 'MYSQL_DATABASE=librarymanagement'
+#       - 'MYSQL_PASSWORD=root@123'
+#       - 'MYSQL_ROOT_PASSWORD=root@123'
+#       - 'MYSQL_USER'
 #     ports:
-#       - '3306:3306'
+#       - '3306:3306
+
+
+

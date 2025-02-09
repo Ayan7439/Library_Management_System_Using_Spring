@@ -1,32 +1,81 @@
+
+ 
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-    <body>
-        <form action="#" th:action="@{/}" th:object="${User}" method="post">
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff; /* Light Blue Background */
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        table {
+            margin: auto;
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+        button {
+            background-color: #007bff; /* Blue Button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        td {
+            padding: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>User Login</h2>
+        <form action="#" th:action="@{/demo/}" th:object="${user}" method="post">
             <table>
                 <tr>
-                    <td>UserId:</td>
-                    <td><input type="text" th:field="*{userId}" /></td>
-                    <td th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">UserId Error</td>
-                </tr>
-                <tr>
                     <td>UserName:</td>
-                    <td><input type="text" th:field="*{Username}" /></td>
-                    <td th:if="${#fields.hasErrors('Username')}" th:errors="*{Username}">UserName Error</td>
+                    <td><input type="text" th:field="*{username}" required/></td>
+                    <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error">UserName Error</td>
                 </tr>
                 <tr>
                     <td>PassWordHash:</td>
-                    <td><input type="text" th:field="*{PasswordHash}" /></td>
-                    <td th:if="${#fields.hasErrors('PasswordHash')}" th:errors="*{PasswordHash}">PassWordHash Error</td>
+                    <td><input type="password" th:field="*{passwordHash}" required/></td>
+                    <td th:if="${#fields.hasErrors('passwordHash')}" th:errors="*{passwordHash}" class="error">PassWordHash Error</td>
                 </tr>
                 <tr>
                     <td>Role:</td>
-                    <td><input type="text" th:field="*{Role}" /></td>
-                    <td th:if="${#fields.hasErrors('Role')}" th:errors="*{Role}">Role Error</td>
+                    <td><input type="text" th:field="*{role}" required/></td>
+                    <td th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="error">Role Error</td>
                 </tr>
                 <tr>
-                    <td><button type="login">LOGIN</button></td>
+                    <td colspan="2">
+                        <button type="submit">LOGIN</button>
+                    </td>
                 </tr>
             </table>
         </form>
-    </body>
+    </div>
+</body>
 </html>
+
+
+

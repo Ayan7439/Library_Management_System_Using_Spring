@@ -1,53 +1,202 @@
-package com.example.librarymanagementsystem.Controller;
+// package com.example.librarymanagementsystem.Controller;
 
-//package com.example.librarymanagement.controller;
+// import org.springframework.beans.factory.annotation.Autowired;
+// //import org.springframework.boot.autoconfigure.web.ErrorProperties.Whitelabel;
+// import org.springframework.stereotype.Controller;
+// import org.springframework.ui.Model;
+// import org.springframework.web.bind.annotation.GetMapping;
+// import org.springframework.web.bind.annotation.PostMapping;
+// import org.springframework.web.bind.annotation.RequestMapping;
+// //import org.springframework.web.bind.annotation.RequestParam;
+// //import org.springframework.web.bind.annotation.ResponseBody;
+
+// import com.example.librarymanagementsystem.Entity.User;
+// import com.example.librarymanagementsystem.Repository.UserRepository;
+
+// @Controller
+// @RequestMapping(path="/demo") // URL's start with /demo
+// public class UserController {
+
+//     private final UserRepository userRepository;
+
+//     @Autowired
+//     public UserController(UserRepository userRepository) {
+//         this.userRepository = userRepository;
+//     }
+
+//     // @GetMapping(path="/")
+//     // public String inputform(User user) {
+//     //     return "userform"; // Show the user form
+//     // }
+
+//     @GetMapping(path="/")
+//     public String inputform(Model model) {
+//         model.addAttribute("user", new User()); // Add an empty User object
+//         return "userform"; // Show the form
+//     }
+
+
+
+
+
+//     @PostMapping(path="/")
+//     public String addNewUser(User user, Model model) { 
+//         userRepository.save(user); // Save the user object directly
+//         model.addAttribute("successMessage", "Congratulations! You have successfully logged in.");
+//         return "redirect:/demo/success"; // Redirect to success page
+//     }
+
+
+//     // @PostMapping(path="/") // Map POST Requests to this method
+//     // public String addNewUser(
+//     //         @RequestParam int UserId, 
+//     //         @RequestParam String Username, 
+//     //         @RequestParam String PasswordHash, 
+//     //         @RequestParam String Role, 
+//     //         Model model) {
+        
+//     //     // Create a new user and save it to the repository
+//     //     User n = new User();
+//     //     n.setUserId(UserId);
+//     //     n.setUsername(Username);
+//     //     n.setPasswordHash(PasswordHash);
+//     //     n.setRole(Role);
+//     //     userRepository.save(n);
+        
+//     //     // Add a success message to the model, which can be displayed in the view
+//     //     model.addAttribute("successMessage", "Congratulations! You have successfully logged in.");
+        
+//     //     // Return the name of the view (HTML template) that will display the message
+//     //     return "redirect:/demo/success"; // success.html will display the success message
+//     // }
+
+
+
+//     // @GetMapping(path="/all")
+//     // public @ResponseBody Iterable<User> getAllUsers() {
+//     //     return userRepository.findAll();
+//     // }
+
+
+//     @GetMapping("/success")
+//     public String showSuccessPage(Model model) {
+//         model.addAttribute("successMessage", "Congratulations! You have successfully logged in.");
+//         return "success";
+//     }
+    // @GetMapping("/success")
+    // public String showSuccessPage() {
+    //     return "success"; // success.html should be displayed here
+    // }
+
+// }
+// package com.example.librarymanagementsystem.Controller;
+
+// //package com.example.librarymanagement.controller;
+
+// import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.stereotype.Controller;
+// import org.springframework.ui.Model;
+// import org.springframework.web.bind.annotation.GetMapping;
+// import org.springframework.web.bind.annotation.PostMapping;
+// import org.springframework.web.bind.annotation.RequestMapping;
+// import org.springframework.web.bind.annotation.RequestParam;
+// import org.springframework.web.bind.annotation.ResponseBody;
+
+// import com.example.librarymanagementsystem.Entity.User;
+// import com.example.librarymanagementsystem.Repository.UserRepository;
+
+// @Controller // This means that this class is a Controller
+// @RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
+// public class UserController {
+// //   private static final String Username = null;
+// //   private static final String PasswordHash = null;
+//     private final UserRepository userRepository;
+//     @Autowired
+//     public UserController(UserRepository userRepository)
+//     {
+//       this.userRepository=userRepository;
+//     } // This means to get the bean called userRepository
+     
+//     @GetMapping(path="/")
+//     public String inputform(User user)
+//     {
+//       return "userform";
+//     }// Which is auto-generated by Spring, we will use it to handle the data
+    
+//       @PostMapping(path="/") // Map ONLY POST Requests
+//       public String addNewUser (@RequestParam int UserId, @RequestParam String Username, @RequestParam String PasswordHash, @RequestParam String Role,Model model) {
+//         // @ResponseBody means the returned String is the response, not a view name
+//         // @RequestParam means it is a parameter from the GET or POST request
+    
+//         User n = new User();
+//         n.setUserId(UserId);
+//         n.setUsername(Username);
+//         n.setPasswordHash(PasswordHash);
+//         n.setRole(Role);
+//         userRepository.save(n);
+//         //return "Saved";
+//         model.addAttribute("successMessage", "Congratulations! You have successfully logged in.");
+        
+//         // Return the name of the view (HTML template) that will display the message
+//         return "success"; // success.html will display the success message
+//   }
+
+//   @GetMapping(path="/all")
+//   public @ResponseBody Iterable<User> getAllUsers() {
+//     // This returns a JSON or XML with the users
+//     return userRepository.findAll();
+//   }
+// }
+
+
+package com.example.librarymanagementsystem.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.librarymanagementsystem.Entity.User;
 import com.example.librarymanagementsystem.Repository.UserRepository;
 
-@Controller // This means that this class is a Controller
-@RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
-public class UserController {
-//   private static final String Username = null;
-//   private static final String PasswordHash = null;
-    private final UserRepository userRepository;
-    @Autowired
-    public UserController(UserRepository userRepository)
-    {
-      this.userRepository=userRepository;
-    } // This means to get the bean called userRepository
-     
-    @GetMapping(path="/")
-    public String inputform(User user)
-    {
-      return "userform";
-    }// Which is auto-generated by Spring, we will use it to handle the data
-    
-      @PostMapping(path="/") // Map ONLY POST Requests
-      public @ResponseBody String addNewUser (@RequestParam int UserId, @RequestParam String Username, @RequestParam String PasswordHash, @RequestParam String Role) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
-    
-        User n = new User();
-        n.setUserId(UserId);
-        n.setUsername(Username);
-        n.setPasswordHash(PasswordHash);
-        n.setRole(Role);
-        userRepository.save(n);
-        return "Saved";
-  }
+import jakarta.validation.Valid;
 
-  @GetMapping(path="/all")
-  public @ResponseBody Iterable<User> getAllUsers() {
-    // This returns a JSON or XML with the users
-    return userRepository.findAll();
-  }
+@Controller
+@RequestMapping(path="/demo") // URLs start with /demo
+public class UserController {
+
+    private final UserRepository userRepository;
+
+    @Autowired
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @GetMapping(path="/")
+    public String inputform(Model model) {
+        model.addAttribute("user", new User()); // Add an empty User object
+        return "userform"; // Show the form
+    }
+
+    @PostMapping(path="/")
+    public String addNewUser(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) { 
+        if (result.hasErrors()) {
+            return "userform"; // Return to the form if validation fails
+        }
+
+        userRepository.save(user); // Save the user object directly
+        model.addAttribute("successMessage", "Congratulations! You have successfully logged in.");
+        return "redirect:/demo/success"; // Redirect to success page
+    }
+
+    @GetMapping("/success")
+    public String showSuccessPage(Model model) {
+        model.addAttribute("successMessage", "Congratulations! You have successfully logged in.");
+        return "success";
+    }
 }
+
