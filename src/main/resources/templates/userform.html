@@ -1,6 +1,6 @@
 
  
-<!DOCTYPE HTML>
+<!-- <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <style>
@@ -65,6 +65,101 @@
                     <td>Role:</td>
                     <td><input type="text" th:field="*{role}" required/></td>
                     <td th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="error">Role Error</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit">LOGIN</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4; /* Light Gray Background */
+            font-family: Arial, sans-serif;
+            color: #333; /* Dark Gray Text */
+        }
+        .form-container {
+            background-color: #ffffff; /* White Container */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        table {
+            width: 100%;
+        }
+        td {
+            padding: 8px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            background-color: #0056b3; /* Dark Blue */
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #003d82; /* Darker Blue */
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>User Login</h2>
+        <form action="#" th:action="@{/demo/}" th:object="${user}" method="post">
+            <table>
+                <tr>
+                    <td>UserName:</td>
+                    <td><input type="text" th:field="*{username}" required/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error">UserName Error</td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" th:field="*{passwordHash}" required/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" th:if="${#fields.hasErrors('passwordHash')}" th:errors="*{passwordHash}" class="error">PassWordHash Error</td>
+                </tr>
+                <tr>
+                    <td>Role:</td>
+                    <td><input type="text" th:field="*{role}" required/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="error">Role Error</td>
                 </tr>
                 <tr>
                     <td colspan="2">
