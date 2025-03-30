@@ -1,10 +1,11 @@
 package com.example.librarymanagementsystem.entities;
 
 import java.util.List;
+import java.util.Set;
+
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "USERS")
 public class User {
 
     @Id
@@ -12,11 +13,15 @@ public class User {
     private long userId;
 
     @Column(name = "username")
-    private String userName;
+    private String username;
 
     private String password;
     private boolean enabled = true;
-    private String role = "USER"; // Removed "ROLE_" prefix
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role")
+    private Set<String> roles;
 
     private String email;
     private String firstName;
@@ -39,7 +44,7 @@ public class User {
 
     public User(String userName, String password, String email, String firstName,
                 String lastName, String address, String phoneNumber, String city) {
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
@@ -58,11 +63,11 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public String getPassword() {
@@ -81,12 +86,12 @@ public class User {
         this.enabled = enabled;
     }
 
-    public String getRole() {
-        return role;
+    public Set<String> getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
     }
 
     public String getEmail() {

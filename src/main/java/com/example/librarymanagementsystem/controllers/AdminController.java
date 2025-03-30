@@ -1,5 +1,6 @@
 package com.example.librarymanagementsystem.controllers;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,10 +54,10 @@ public class AdminController {
 	
 	@PutMapping(value="/confirmaccountsettings")
 	public String confirmAccountChanges(@RequestParam boolean accStatus,
-										@RequestParam String role,
+										@RequestParam Set<String> roles,
 										@RequestParam Long userId,
 										Model model) {
-		model.addAttribute("role", role);
+		model.addAttribute("roles", roles);
 		model.addAttribute("accStatus", accStatus);
 		model.addAttribute("user", usService.findById(userId));
 		return "admin/admin-confirm-account-settings.html";
@@ -64,10 +65,10 @@ public class AdminController {
 	
 	@PutMapping(value="/saveaccountsettings")
 	public String saveAccountSettings(@RequestParam boolean accStatus,
-									  @RequestParam String role,
+									  @RequestParam Set<String> roles,
 									  @RequestParam Long userId) {
 		User user = usService.findById(userId);
-		user.setRole(role);
+		user.setRoles(roles);
 		user.setEnabled(accStatus);
 		usService.save(user);
 		return "redirect:/admin/accountsettingssaved";

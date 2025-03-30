@@ -8,21 +8,3 @@ services:
       MYSQL_DATABASE: librarymanagement
     ports:
       - "3306:3306"
-
-
-
-
-
-# services:
-#   mysql:
-#     image: 'mysql:latest'
-#     environment:
-#       - 'MYSQL_DATABASE=librarymanagement'
-#       - 'MYSQL_PASSWORD=root@123'
-#       - 'MYSQL_ROOT_PASSWORD=root@123'
-#       - 'MYSQL_USER'
-#     ports:
-#       - '3306:3306
-
-
-
