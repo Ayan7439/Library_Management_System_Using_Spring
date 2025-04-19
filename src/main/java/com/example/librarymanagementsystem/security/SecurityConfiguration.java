@@ -34,10 +34,16 @@ public class SecurityConfiguration {
                 .requestMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
             )
+            // .formLogin(form -> form
+            //     .loginPage("/login")
+            //     .permitAll()
+            // )
             .formLogin(form -> form
                 .loginPage("/login")
+                .defaultSuccessUrl("/redirectByRole", true)
                 .permitAll()
             )
+
             .csrf(csrf -> csrf.disable()) // ✅ Fix CSRF ignoring issue
             .headers(headers -> headers.frameOptions().disable()); // ✅ Fix frame options
 

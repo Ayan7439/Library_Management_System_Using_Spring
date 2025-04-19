@@ -9,7 +9,7 @@
 
 	<div class="container">
 		<h3>Pay reservation</h3>
-		<img src="/Images/payment-icons.png" alt="Payment icons...">
+		<img src="/Images/payment-icons.jpg" alt="Payment icons...">
 		
 		<div class="row">
 			<div class="col-25">
@@ -22,9 +22,9 @@
 		
 		<div class="row">
 			<div class="col-75">
-				<form th:action="@{/user/browsebooks/savereservation}" th:method="PUT">	
+				<form th:action="@{/users/browsebooks/savereservation}" th:method="post">	
 					<input type="submit" value="Pay and complete reservation" style="width: 200px">
-					<input type="hidden" value="PUT" name="_method">
+					<input type="hidden" value="put" name="_method">
 					<input type="hidden" th:value="${reservedBookIdsInString}" th:name="reservedBookIdsInString">
 				</form>
 			</div>

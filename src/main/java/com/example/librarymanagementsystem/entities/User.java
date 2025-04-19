@@ -42,9 +42,9 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String password, String email, String firstName,
+    public User(String username, String password, String email, String firstName,
                 String lastName, String address, String phoneNumber, String city) {
-        this.username = userName;
+        this.username = username;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
@@ -62,12 +62,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUserName(String userName) {
-        this.username = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

@@ -40,7 +40,7 @@
 	
 		<div class="row">
 			<div class="col-50">	
-				<form th:action="@{/user/yourbooks/extend}" th:method="PUT">
+				<form th:action="@{/users/yourbooks/extend}" th:method="PUT">
 					<input type="submit" value="Pay">
 					<input type="hidden" th:value="0" th:name="fineAmount">
 					<input type="hidden" th:value="${weeksToExtend}" th:name="weeksToExtend">
@@ -50,7 +50,7 @@
 			</div>
 			
 			<div class="col-50">	
-				<form th:action="@{user/yourbooks}" method="GET">
+				<form th:action="@{/users/yourbooks}" method="GET">
 					<input style="background-color: red" type="submit" value="Cancel payment">
 				</form>
 			</div>	

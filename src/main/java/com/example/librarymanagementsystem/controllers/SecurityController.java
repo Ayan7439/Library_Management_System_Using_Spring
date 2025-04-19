@@ -1,5 +1,7 @@
 package com.example.librarymanagementsystem.controllers;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -38,9 +40,12 @@ public class SecurityController {
 	@PostMapping(value="/register/save")
 	public String saveNewAccount(User account) {
 		account.setPassword(pwEncoder.encode(account.getPassword()));
+		account.setRoles(Set.of("USER")); // ✅ Do NOT add "ROLE_" here
 		accService.save(account);
 		return "redirect:/register/accountcreated";
 	}
+	
+
 	
 	@GetMapping(value="/register/accountcreated")
 	public String accountCreated() {

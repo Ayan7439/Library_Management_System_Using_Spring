@@ -29,7 +29,7 @@
 					<td th:text="${resBook.key.edition}"></td>
 					<td th:text="${resBook.value}"></td>
 					<td style="width: 100px">
-						<form action="/user/browsebooks">
+						<form action="/users/browsebooks">
 							<input class="table" type="submit" style="background-color: red" value="Remove">
 							<input type="hidden" th:value="${reservedBookIds}" th:name="reservedBookIdsInString">
 							<input type="hidden" th:value="${resBook.key.bookId}" th:name="removeBookId">
@@ -48,7 +48,7 @@
 			return the book in time, which will result in an expired reservation. In that case your reservation will be canceled.</p>
 			
 				<div class="col-50">
-					<form th:action="@{/user/browsebooks/payreservation}" th:method="PUT">
+					<form th:action="@{/users/browsebooks/payreservation}" th:method="PUT">
 						<input type="submit" value="Reserve books">
 						<input type="hidden" th:name="_method" th:value="PUT">
 						<input type="hidden" th:value="${reservedBookIds}" th:name="reservedBookIdsInString">
@@ -68,7 +68,7 @@
 		<h3>Books</h3>
 		
 		<div class="row">
-			<form action="/user/browsebooks" method="GET">
+			<form action="/users/browsebooks" method="GET">
 				<div class="col-25">
 					<Label for="title">Title</Label>
 				</div>
@@ -88,7 +88,7 @@
 				</div>
 			</form>
 			
-			<form action="/user/browsebooks" method="GET">
+			<form action="/users/browsebooks" method="GET">
 				<div>
 					<input style="margin-left: 20px" type="submit" value="Show all books" name="showAllBooks">
 					<input type="hidden" th:value="${reservedBookIds}" th:name="reservedBookIdsInString">

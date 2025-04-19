@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.RestController;
 
 import com.example.librarymanagementsystem.entities.Book;
 import com.example.librarymanagementsystem.entities.User;
@@ -28,7 +28,8 @@ import com.example.librarymanagementsystem.utils.DateTracker;
 import com.example.librarymanagementsystem.utils.FineCalculator;
 import com.example.librarymanagementsystem.utils.ListInStringConverter;
 
-@RestController
+// @RestController
+@Controller
 @RequestMapping("/users")
 public class UserController {
 	
@@ -67,7 +68,7 @@ public class UserController {
 		User currentUser = currentUserFinder.getCurrentUser();
 		model.addAttribute("booksWithFines", fineCalculator.selectBooksWithFines(currentUser.getBooks()));
 		model.addAttribute("currentUser", currentUser);
-		return "user/user-home.html";
+		return "user/user-home";
 	}
 	
 	@GetMapping(value="/yourbooks")
@@ -76,7 +77,7 @@ public class UserController {
 		List<Book> books = currentUser.getBooks();
 		LinkedHashMap<Book, BigDecimal> booksWithFines = fineCalculator.getBooksWithFines(books);
 		model.addAttribute("books", booksWithFines);
-		return "user/user-your-books.html";
+		return "user/user-your-books";
 	}
 	
 	@PutMapping(value="/yourbooks/extend")
@@ -93,13 +94,13 @@ public class UserController {
 			book.setReturnDate(book.getReturnDate().plusDays(7 * weeksToExtend));
 			book.setTimesExtended(book.getTimesExtended() + weeksToExtend);
 			bookService.save(book);	
-			return"redirect:/user/yourbooks/bookextended";
+			return"redirect:/users/yourbooks/bookextended";
 			
 		} else if (fineAmount.compareTo(BigDecimal.valueOf(0)) == 1 && daysTooLate <= (extensionsLeft * 7) && book.getReservedByUser() == null) {
-			return "redirect:/user/yourbooks/payfine/" + bookId;
+			return "redirect:/users/yourbooks/payfine/" + bookId;
 		
 		} else {
-			return "redirect:/user/yourbooks/bookcannotbeextended";
+			return "redirect:/users/yourbooks/bookcannotbeextended";
 		
 		}
 	}
@@ -115,7 +116,7 @@ public class UserController {
 		model.addAttribute("fine", fine);
 		model.addAttribute("book", book);
 		
-		return "user/user-pay-fine.html";
+		return "user/user-pay-fine";
 	}
 	
 	@PostMapping(value="/yourbooks/dopayment")
@@ -127,17 +128,17 @@ public class UserController {
 		model.addAttribute("fineAmount", fineAmount);
 		model.addAttribute("weeksToExtend", weeksToExtend);
 		model.addAttribute("book", currentBook);
-		return "user/user-do-payment.html";
+		return "user/user-do-payment";
 	}
 		
 	@GetMapping(value="/yourbooks/bookextended")
 	public String bookExtended() {
-		return "user/user-book-extended.html";
+		return "user/user-book-extended";
 	}
 	
 	@GetMapping(value="/yourbooks/bookcannotbeextended")
 	public String bookCanNotBeExtended() {
-		return "user/user-book-can-not-be-extended.html";
+		return "user/user-book-can-not-be-extended";
 	}
 	
 	@GetMapping(value="/browsebooks")
@@ -167,12 +168,12 @@ public class UserController {
 		model.addAttribute("author", author);
 		model.addAttribute("showAllBooks", showAllBooks);
 		model.addAttribute("books", books);
-		return "user/user-browse-books.html";
+		return "user/user-browse-books";
 	}
 	
 	@GetMapping(value="/FAQ")
 	public String FAQ() {
-		return "user/user-FAQ.html";
+		return "user/user-FAQ";
 	}
 	
 	
@@ -183,20 +184,20 @@ public class UserController {
 		
 		model.addAttribute("amountToPay", amountToPay);
 		model.addAttribute("reservedBookIdsInString", reservedBookIdsInString);	
-		return "user/user-pay-reservation.html";
+		return "user/user-pay-reservation";
 	}
 	
-	@PutMapping(value="browsebooks/savereservation")
+	@PutMapping(value="/browsebooks/savereservation")
 	public String saveBookReservations(@RequestParam String reservedBookIdsInString) {
 		Set<Long> reservedBookIds = listConverter.convertListInStringToSetInLong(reservedBookIdsInString);
 		dateTracker.setReserervationDatesAndReservedByCurrentUserForMultipleBooks(reservedBookIds);		
-		return "redirect:/user/yourreservations";
+		return "redirect:/users/yourreservations";
 	}
 	
 	@GetMapping(value="/yourreservations")
 	public String yourReservations(Model model) {
 		User currentUser = currentUserFinder.getCurrentUser();
 		model.addAttribute("reservedBooks", currentUser.getReservedBooks());
-		return "user/user-your-reservations.html";
+		return "user/user-your-reservations";
 	}
 }

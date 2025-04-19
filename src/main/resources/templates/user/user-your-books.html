@@ -35,7 +35,7 @@
 					<td th:if="${book.value == 0}" th:text="${'$ ' + book.value}"></td>
 					<td th:text="${book.key.timesExtended}"></td>
 					<td style="width: 260px">
-						<form th:action="@{/user/yourbooks/extend}" th:method="POST">
+						<form th:action="@{/users/yourbooks/extend}" th:method="POST">
 							<input class="table" style="width: 250px" type="submit" value="Extend return date by one week">
 							<input type="hidden" th:value=${book.key.bookId} name="bookId">
 							<input type="hidden" th:value="${book.value}" name="fineAmount">

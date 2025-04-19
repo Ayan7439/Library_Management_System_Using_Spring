@@ -27,7 +27,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
 
         return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getUserName())
+                .username(user.getUsername())
                 .password(user.getPassword())
                 .authorities(user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role)).collect(Collectors.toList()))
                 .disabled(!user.isEnabled())
