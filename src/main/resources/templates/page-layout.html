@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
@@ -29,6 +29,47 @@
   <li><a href="/admin/manageaccounts">Manage Accounts</a></li>
   <li style="float:right"><a class="active" href="/logout">Logout</a></li>
 </ul>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Library Management</title>
+  <link rel="stylesheet" th:href="@{/CSS/account-layout.css}">
+</head>
+<body class="page-wrapper">
+
+  <!-- user navbar -->
+  <ul th:fragment="userNavBar">
+    <li><a href="/users">Home</a></li>
+    <li><a href="/users/yourbooks">Your Books</a></li>
+    <li><a href="/users/browsebooks">Browse Books</a></li>
+    <li><a href="/users/yourreservations">Your Reservations</a></li>
+    <li><a href="/users/FAQ">FAQ</a></li>
+    <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+  </ul>
+
+  <!-- employee navbar -->
+  <ul th:fragment="employeeNavBar">
+    <li><a href="/employee">Home</a></li>
+    <li><a href="/employee/users/showusers">Users</a></li>
+    <li><a href="/employee/books/showbooks">Catalog</a></li>
+    <li><a href="/employee/orders">Place Order</a></li>
+    <li><a href="/employee/returnedbooks">Return Books</a></li>
+    <li><a href="/employee/reservations">Process Reservations</a></li>
+    <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+  </ul>
+
+  <!-- admin navbar -->
+  <ul th:fragment="adminNavBar">
+    <li><a href="/admin">Home</a></li>
+    <li><a href="/admin/manageaccounts">Manage Accounts</a></li>
+    <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+  </ul>
 
 </body>
 </html>

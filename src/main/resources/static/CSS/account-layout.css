@@ -1,8 +1,8 @@
-@charset "ISO-8859-1";
+/* @charset "ISO-8859-1";
 
 /*----------------------- CONTENT LAYOUT ------------------------ */
 
-body {
+/* body {
 	font-family: Helvetica, sans-serif;
 	background-color: #5D5A5E;
 }
@@ -19,13 +19,13 @@ body {
   min-width: 1200px;
   
  
-}
+} */
 
 
 
 /* ----------------------- NAVIGATION BAR ----------------------- */
 
-ul {
+/* ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -55,11 +55,11 @@ li a {
 .active {
   background-color:#6dae67;
   color: white;
-}
+} */
 
 /* ----------------------------- FORMS ----------------------------- */
 
-input[type=text],input[type=password], input[type=email], input[type=number], input[type=date], select, textarea {
+/* input[type=text],input[type=password], input[type=email], input[type=number], input[type=date], select, textarea {
   width: 200px;
   padding: 12px;
   border: 1px solid #ccc;
@@ -107,11 +107,11 @@ input[type=submit] {
   content: "";
   display: table;
   clear: both;
-}
+} */
 
 /* ------------------- TABLE STYLE ------------------*/
 
-#tablestyle {
+/* #tablestyle {
  
   border-collapse: collapse;
   width: 98%;
@@ -145,5 +145,146 @@ input[type=submit].table {
   border-radius: 4px;
   cursor: pointer;
   float: left;
+} */
+ 
+
+
+@charset "ISO-8859-1";
+
+/* ---------------------------------------------------------
+   FULL-PAGE BACKGROUND & OVERLAY
+--------------------------------------------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, sans-serif;
+
+  /* replace with your own professional library photo */
+  background: url("/Images/library_image.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
+
+/* a dark semi-opaque overlay so white containers stand out */
+.page-wrapper {
+  background-color: rgba(0, 0, 0, 0.6);
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 20px 0; /* vertical breathing room */
+}
+
+/* ---------------------------------------------------------
+   CONTENT CONTAINERS
+--------------------------------------------------------- */
+.container {
+  max-width: 1200px;
+  margin: 20px auto;  /* center + vertical spacing */
+  background-color:beige; 
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------
+   NAVIGATION BAR
+--------------------------------------------------------- */
+ul {
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  /*background-color: #f2f2f2;*/
+  background-color:beige;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+ul li {
+  float: left;
+}
+
+ul li a {
+  display: block;
+  padding: 14px 16px;
+  color: #000;
+  text-decoration: none;
+}
+
+ul li a.active {
+  background-color: green;
+  color: #fff;
+}
+
+/* ---------------------------------------------------------
+   TABLE STYLE (if you still use it on admin pages)
+--------------------------------------------------------- */
+#tablestyle {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#tablestyle th,
+#tablestyle td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 12px;
+}
+
+#tablestyle tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#tablestyle tr:hover {
+  background-color: #ddd;
+}
+
+#tablestyle th {
+  background-color: green;
+  color: #fff;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+}
+
+/* ---------------------------------------------------------
+   FORMS & BUTTONS
+--------------------------------------------------------- */
+label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  max-width: 300px; /* limit how wide your fields go */
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  width: 100%;
+  max-width: 200px;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-top: 8px;
+  display: block;
+}
+
+/* feedback messages */
+.incorrect { color: red; }
+.logout    { color: green; }
 

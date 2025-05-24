@@ -45,7 +45,7 @@ public class LibraryApplication {
 	CommandLineRunner runner() {
 		return args -> {
 		
-			User user1 = new User("admin", pwEncoder.encode("test"), "martijn.reede@gmail.com", "Martijn", "Reede", "Huizumerlaan 158", "06-11433823", "Amsterdam");
+			User user1 = new User("admin", pwEncoder.encode("admin1"), "martijn.reede@gmail.com", "Martijn", "Reede", "Huizumerlaan 158", "06-11433823", "Amsterdam");
 			user1.setRoles(Set.of("ROLE_ADMIN", "ROLE_EMPLOYEE"));
 			
 			User user2 = new User("employee", pwEncoder.encode("test"), "cyrille.jones@gamail.com", "Cyrille", "Jones", "Hugo de Grootstraat 174", "06-87054875", "Sliedrecht");
