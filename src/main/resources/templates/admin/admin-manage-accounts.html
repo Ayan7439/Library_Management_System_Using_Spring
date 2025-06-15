@@ -46,13 +46,13 @@
 				<th style="width: 100px">Select Account</th>
 			</tr>
 			<tr th:each="user : ${users}">
-				<td th:text="${user.userName}"></td>
+				<td th:text="${user.username}"></td>
 				<td th:text="${user.firstName}"></td>
 				<td th:text="${user.lastName}"></td>
 				<td th:text="${user.email}"></td>
 				<td th:text="${user.phoneNumber}"></td>
 				<td th:text="${user.address}"></td>
-				<td th:text="${user.City}"></td>
+				<td th:text="${user.city}"></td>
 				<td>
 					<text th:if="${user.role.equals('ROLE_USER')}">USER</text>
 					<text th:if="${user.role.equals('ROLE_EMPLOYEE')}">EMPLOYEE</text>
@@ -61,7 +61,7 @@
 				<td>
 					<form th:action="@{/admin/manageaccount}" method="GET">
 						<input type="submit" value="Select" class="table">
-						<input type="hidden" th:value="${user.userId}" name="userId">
+						<input type="hidden" th:value="${user.id}" name="userId">
 					</form>
 				</td>
 			</tr>

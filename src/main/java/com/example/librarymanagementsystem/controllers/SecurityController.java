@@ -40,7 +40,7 @@ public class SecurityController {
 	@PostMapping(value="/register/save")
 	public String saveNewAccount(User account) {
 		account.setPassword(pwEncoder.encode(account.getPassword()));
-		account.setRoles(Set.of("USER")); // ✅ Do NOT add "ROLE_" here
+		account.setRoles(Set.of("ROLE_USER")); // ✅ Do NOT add "ROLE_" here
 		accService.save(account);
 		return "redirect:/register/accountcreated";
 	}
