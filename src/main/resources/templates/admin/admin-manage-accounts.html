@@ -54,9 +54,9 @@
 				<td th:text="${user.address}"></td>
 				<td th:text="${user.city}"></td>
 				<td>
-					<text th:if="${user.role.equals('ROLE_USER')}">USER</text>
-					<text th:if="${user.role.equals('ROLE_EMPLOYEE')}">EMPLOYEE</text>
-					<text th:if="${user.role.equals('ROLE_ADMIN')}">ADMIN</text>
+					<text th:if="${user.role.contains('ROLE_USER')}">USER</text>
+					<text th:if="${user.role.contains('ROLE_EMPLOYEE')}">EMPLOYEE</text>
+					<text th:if="${user.role.contains('ROLE_ADMIN')}">ADMIN</text>
 				</td>
 				<td>
 					<form th:action="@{/admin/manageaccount}" method="GET">
