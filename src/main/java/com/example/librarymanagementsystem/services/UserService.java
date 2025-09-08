@@ -68,5 +68,14 @@ public class UserService {
 		}
 		return users;
 	}
+
+	public long count() {
+    	return usRepo.count();
+}
+
+	public boolean userExistsByUsername(String username) {
+    	return usRepo.findByUsername(username).isPresent(); // assumes method exists in UserRepository
+	}
+
 	
 }

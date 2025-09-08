@@ -141,35 +141,7 @@ public class UserController {
 		return "user/user-book-can-not-be-extended";
 	}
 	
-	// @GetMapping(value="/browsebooks")
-	// public String browseBooks(@RequestParam (required=false) String title,
-	// 						  @RequestParam (required=false) String author,
-	// 						  @RequestParam (required=false) String showAllBooks,
-	// 						  @RequestParam (required=false) Long  reservedBookId,
-	// 						  @RequestParam (required=false) Long removeBookId,
-	// 						  @RequestParam (required=false) String reservedBookIdsInString,
-	// 						  Model model) {
-	
-	// 	Set<Long> reservedBookIds = new LinkedHashSet<Long>();
-	// 	if (reservedBookIdsInString != null) reservedBookIds = listConverter.convertListInStringToSetInLong(reservedBookIdsInString);		
-	// 	if (removeBookId != null) reservedBookIds.remove(removeBookId);
-	// 	if(reservedBookId != null) reservedBookIds.add(reservedBookId);
-		
-	// 	Map<Book, String> listedBookReservations = dateTracker.listedBookReservations(reservedBookIds);
-						
-	// 	List<Book> books;
-	// 	if (showAllBooks == null) books = bookService.searchBooks(title, author);
-	// 	else books = bookService.findAll();		
-						
-	// 	model.addAttribute("userHasFine", fineCalculator.hasFineOrNot(currentUserFinder.getCurrentUser()));
-	// 	model.addAttribute("listedBookReservations", listedBookReservations);
-	// 	model.addAttribute("reservedBookIds", reservedBookIds);
-	// 	model.addAttribute("title", title);
-	// 	model.addAttribute("author", author);
-	// 	model.addAttribute("showAllBooks", showAllBooks);
-	// 	model.addAttribute("books", books);
-	// 	return "user/user-browse-books";
-	// }
+
 	@GetMapping(value="/browsebooks")
 public String browseBooks(@RequestParam (required=false) String title,
                           @RequestParam (required=false) String author,

@@ -21,34 +21,28 @@ public class SecurityConfiguration {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/user/**").hasAuthority("ROLE_USER") // ✅ Fix role names
-                .requestMatchers("/employee/**").hasAuthority("ROLE_EMPLOYEE")
-                .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
-                .requestMatchers("/login/**", "/register/**", "/logout/**").permitAll()
-                .requestMatchers("/CSS/**", "/Images/**").permitAll()
-                .requestMatchers("/h2-console/**").permitAll()
-                .anyRequest().authenticated()
-            )
-            // .formLogin(form -> form
-            //     .loginPage("/login")
-            //     .permitAll()
-            // )
-            .formLogin(form -> form
-                .loginPage("/login")
-                .defaultSuccessUrl("/redirectByRole", true)
-                .permitAll()
-            )
+    http
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/", "/home","/books" ,"/login/**", "/register/**", "/logout/**", "/CSS/**", "/JS/**", "/Images/**").permitAll()
+            .requestMatchers("/user/**").hasAuthority("ROLE_USER")
+            .requestMatchers("/employee/**").hasAuthority("ROLE_EMPLOYEE")
+            .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+            .requestMatchers("/h2-console/**").permitAll()
+            .anyRequest().authenticated()
+        )
+        .formLogin(form -> form
+            .loginPage("/login")
+            .defaultSuccessUrl("/role-redirect", true)
+            .permitAll()
+        )
+        .csrf(csrf -> csrf.disable())
+        .headers(headers -> headers.frameOptions().disable());
 
-            .csrf(csrf -> csrf.disable()) // ✅ Fix CSRF ignoring issue
-            .headers(headers -> headers.frameOptions().disable()); // ✅ Fix frame options
-
-        return http.build();
+    return http.build();
     }
+
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {

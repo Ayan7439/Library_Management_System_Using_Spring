@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Library Dashboard</title>
+
+  <!-- Correct relative path for Spring Boot static resource -->
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>📚 Open Library</h2>
+      <div class="admin-info">
+        <strong>Admin</strong>
+        <p>Online</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="/books">Books</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header">
+        <h1>Home</h1>
+        <div class="auth-buttons">
+          <button onclick="location.href='/login'">Login</button>
+          <button onclick="location.href='/register'">Register</button>
+        </div>
+      </header>
+
+      <section class="cards">
+        <div class="card fiction">
+          <h2>10</h2>
+          <p>Fiction Books</p>
+        </div>
+        <div class="card nonfiction">
+          <h2>8</h2>
+          <p>Nonfiction Books</p>
+        </div>
+        <div class="card member">
+          <h2>5</h2>
+          <p>Member Books</p>
+        </div>
+        <div class="card science">
+          <h2>7</h2>
+          <p>Science Books</p>
+        </div>
+      </section>
+
+      <section class="charts">
+        <div class="issued-box">
+          <h3>Books Issued till Date</h3>
+          <p class="big-number">30</p>
+        </div>
+        <div class="chart-circle">
+          <canvas id="booksChart"></canvas>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/JS/script.js"></script>
+</body>
+</html>

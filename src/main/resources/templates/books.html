@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Books</title>
+  <link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>📚 Open Library</h2>
+      <div class="admin-info">
+        <strong>Admin</strong>
+        <p>Online</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/books">Books</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <h1>Available Books</h1>
+      <table class="book-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Release Year</th>
+            <th>Edition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="book : ${books}">
+            <td th:text="${book.title}">Title</td>
+            <td th:text="${book.author}">Author</td>
+            <td th:text="${book.releaseYear}">Year</td>
+            <td th:text="${book.edition}">Edition</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+</body>
+</html>

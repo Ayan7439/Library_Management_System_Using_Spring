@@ -33,7 +33,7 @@ public class BookService {
 	public List<Book> findAll(){
 		return (List<Book>) bookRepo.findAll();
 	}
-	
+
 	public Book findById(long bookId) {
 		Book book = bookRepo.findById(bookId).get();
 		return book;
@@ -162,4 +162,21 @@ public class BookService {
 			usRepo.save(user);
 		}
 	}
+
+	public long count() {
+    	return bookRepo.count();
+	}
+
+	public boolean bookExists(String title, String author, int year, int edition) {
+    	for (Book book : bookRepo.findAll()) {
+        	if (book.getTitle().equalsIgnoreCase(title)
+            	&& book.getAuthor().equalsIgnoreCase(author)
+            	&& book.getReleaseYear() == year
+            	&& book.getEdition() == edition) {
+            	return true;
+        	}
+    	}
+    	return false;
+	}
+
 }
